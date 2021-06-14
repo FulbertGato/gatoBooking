@@ -14,7 +14,7 @@ public class PersonneForms {
     String email;
     String password;
     public static Scanner scanner = new Scanner(System.in);
-    Validation validation = new Validation();
+    
     Service service = new Service();
     Map<String, String> formData = new Hashtable<String,String>();
 

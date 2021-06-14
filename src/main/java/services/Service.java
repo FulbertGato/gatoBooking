@@ -73,7 +73,7 @@ public class Service implements IService {
 
     @Override
     public boolean addUtilisateur(Personne personne) {
-       //recuperation base de donner
+       //recuperation du fichier json et conversion
         listeUtilisateurs = convertisseursJsonArrayPersonne();
         //ajout du client a la liste
         
@@ -124,13 +124,28 @@ public class Service implements IService {
         listeLocaux  = convertisseursJsonArrayLocal();
         for(Local local : listeLocaux){
             if (local != null) {
-                if (! local.getEtat().equals("reserve")) {    
+                if (!local.getEtat().equals("reserve")) {    
                     System.out.println(local.affichage());
+                }else{
+                    System.out.println("Aucun local disponible");
                 }
+            }else{
+                System.out.println("Aucun local disponible");
             }
          }
-       listeLocaux.clear();
-       
+       listeLocaux.clear(); 
+    }
+    @Override
+    public Local searchlocal(String ref) {
+        listeLocaux  = convertisseursJsonArrayLocal();
+        for(Local local : listeLocaux){
+            if (local.getRef().equals(ref)) {
+                
+                return local;
+            }
+         }
+         listeLocaux.clear();
+         return null;
     }
 
     @Override
@@ -206,11 +221,22 @@ public class Service implements IService {
         listesDesReservations  = convertisseursJsonArrayReservation();
 
          for(Reservation reservation:listesDesReservations){
-
+            
             if(reservation.getIdReservation().equals(id)){
 
+              //Reservation res = reservation;
               reservation.setEtat("valider");
+              //listesDesReservations.set(reservation, res);
               System.out.println(reservation.affichage());
+
+               if(searchlocal(reservation.getLocalRef()) != null){
+
+                    Local local = searchlocal(reservation.getLocalRef());
+                    local.setEtat("reserver");
+                    System.out.println(local.affichage());
+                    
+               }
+
               pauseEcran();
                 try {
                    FileWriter writer = new FileWriter("src\\main\\java\\model\\reservation.json");
@@ -221,13 +247,13 @@ public class Service implements IService {
                    
                     
                 } catch (IOException e) {
-                    e.printStackTrace();
-                    
+                    break;  
                 }
             }
 
 
         }
+        
 
     }
     @Override

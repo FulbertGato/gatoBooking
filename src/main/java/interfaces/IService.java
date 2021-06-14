@@ -27,6 +27,7 @@ public interface IService{
    boolean addUtilisateur(Personne Personne);
    boolean removePersonneClient(Personne personne);
    boolean loginToApp(String login, String password);
+   Local searchlocal(String ref);
    void addChambre(Chambre chambre);
    void addLocalAppart(Appartement appartement);
    void addReservation(Reservation reservation );
@@ -37,19 +38,11 @@ public interface IService{
    Personne searchUtilisateurs(String nci);
    String getRole(String nci);
    int cout(int prix, int taux);
-
    ArrayList<Personne> convertisseursJsonArrayPersonne();
-
    ArrayList<Local> convertisseursJsonArrayLocal();
-
-   ArrayList<Chambre> convertisseursJsonArrayChambre();
-
    void writeJsonArray(JSONArray jsonArray, String path);
-
    JSONArray jsonFile(String path);
-
    void flushEcran();
-
    void pauseEcran();
 
    ArrayList<Reservation> convertisseursJsonArrayReservation();

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Local implements IAffiche {
     protected final int FORMAT = 4;
     protected String ref;
+   
     public String getRef() {
         return this.ref;
     }
@@ -36,7 +37,17 @@ public class Local implements IAffiche {
     public void setTauxLocation(float tauxLocation) {
         this.tauxLocation = tauxLocation;
     }
+    
     protected String etat;
+
+    public String getEtat() {
+        return this.etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
     Service service = new Service();
     ArrayList<Local> listeLocaux = new ArrayList<Local>();
     
@@ -48,9 +59,7 @@ public class Local implements IAffiche {
         this.etat = etat;
     }
 
-    public String getEtat() {
-        return etat;
-    }
+    
 
     public String getLocalisation() {
         return this.localisation;
