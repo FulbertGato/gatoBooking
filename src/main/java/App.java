@@ -59,17 +59,23 @@ public class App {
 
                                 switch (choix) {
                                     case 1:
-
-                                    
-
+                                    service.seeReservationByclient(user.get("nci"));
+                                    service.pauseEcran();
                                         break;
                                     case 2:
-
+                                        service.listingLocal();
                                         break;
                                     case 3:
+                                    service.listingLocal();
+                                    reservation = formulaireRes.doReservationForm();
+                                    Reservation res = new Reservation(user.get("nci"),reservation.get("ref"),reservation.get("dure"),"EN COURS",5000);
+                                    service.addReservation(res);
 
                                         break;
                                     case 4:
+                                           Personne client=service.searchUtilisateurs(user.get("nci"));
+                                          System.out.println(client.affichage());
+                                          service.pauseEcran();
 
                                         break;
                                     case 5:
@@ -135,6 +141,9 @@ public class App {
                                 switch (choix) {
                                     
                                     case 1:
+                                     service.listReservationsEnCours();
+                                    // service.flushEcran();
+                                     service.pauseEcran();
 
                                         break;
                                     case 2:
@@ -151,7 +160,7 @@ public class App {
                                                  /* service.flushEcran();
                                                   service.listReservationsEnCours();
                                                   service.flushEcran();*/
-                                                  service.listReservationsEnCours();
+                                                  service.listingLocal();
                                                  // service.flushEcran();
                                                   service.pauseEcran();
                                                   choix = 3;
@@ -186,7 +195,7 @@ public class App {
                                                     service.addChambre(chambre);
                                                 }else if(Integer.parseInt(type)  == 1){
                                                     Map<String, String> appAdd= formulairelOc.addAppartements();
-                                                    for(int i=1; i< Integer.parseInt(appAdd.get("nombrePiece"));i++){
+                                                    for(int i=1; i<= Integer.parseInt(appAdd.get("nombrePiece"));i++){
 
                                                         System.out.println("Entrez la dimension ");
                                                         int dimension = Integer.parseInt(scanner.nextLine());
@@ -202,6 +211,7 @@ public class App {
                                                 }
                                                 break;
                                             case 5:
+                                            System.out.println("Bientot disponible");
                                                 break;
                                             case 6:
                                                 service.flushEcran();

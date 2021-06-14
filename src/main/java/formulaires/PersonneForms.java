@@ -22,18 +22,18 @@ public class PersonneForms {
 
     public Map<String, String> registerForm(){
 
-        System.out.println("\n");
-        System.out.println(" **********************PAGE D'INSCRIPTION****************************");
-        System.out.println("\n");
+        System.out.println("\n\n\t\t");
+        System.out.println(" \n\n\t\t**********************PAGE D'INSCRIPTION****************************");
+        System.out.println("\n\n\t\t");
 
         do{
-            System.out.print("Entrez votre numero de carte d'identite: ");
+            System.out.print("\n\n\n\t\tEntrez votre numero de carte d'identite: ");
             nci = scanner.nextLine();
             if(!Validation.isValidNci(nci)){
 
-                System.out.println("\n");
-                System.out.println(" Hey 😂😂😂 faudrait faire attention a ce que tu tapes");
-                System.out.println("\n");
+                System.out.println("\n\n\t\t");
+                System.out.println("\n\n\t\t Hey 😂😂😂 faudrait faire attention a ce que tu tapes");
+                System.out.println("\n\t\t");
 
             }
         }while(!Validation.isValidNci(nci));
@@ -44,28 +44,28 @@ public class PersonneForms {
             /*-------------------------------validation nom complet------------------------------------*/
 
             do{
-                System.out.print("Entrer votre nom : ");
+                System.out.print("\n\n\n\t\tEntrer votre nom : ");
                 String nom = scanner.nextLine();
-                System.out.print("Entrer votre prenom : ");
+                System.out.print("\n\n\n\t\tEntrer votre prenom : ");
                 String prenom = scanner.nextLine();
                 nomComplet = nom+" "+prenom;
                 //System.out.print("Votre nom au complet est : "+nomComplet);
 
                 if(Validation.estVide(nomComplet)){
-                    System.out.print("Hey 😂😂😂! Vous devez remplir au moins un champ : \n");
+                    System.out.print("\n\n\n\t\tHey 😂😂😂! Vous devez remplir au moins un champ : \n");
                 }
 
             }while (Validation.estVide(nomComplet));
-            System.out.print("\nVotre nom au complet est : \n"+nomComplet);
+            System.out.print("\n\n\n\t\tVotre nom au complet est : \n"+nomComplet);
 
             /*--------------------------------------------------------------------------------------------*/
 
             /*-----------------------------------validation telephonne------------------------------------*/
             do{
-                System.out.print("\nEntrer votre numero de téléphone avec le code pays +221 ou 00221: ");
+                System.out.print("\n\n\n\t\tEntrer votre numero de téléphone avec le code pays +221 ou 00221: ");
                 tel = scanner.nextLine();
                 if(!Validation.isValidTel(tel)){
-                    System.out.print(" Hey 😂😂😂! Vous devez saisir un numero de telephone correct: \n");
+                    System.out.print("\n\n\n\t\t Hey 😂😂😂! Vous devez saisir un numero de telephone correct: \n");
                 }
 
             }while(!Validation.isValidTel(tel));
@@ -73,29 +73,29 @@ public class PersonneForms {
 
             /*-----------------------------------validation adresse du client------------------------------------*/
             do{
-                System.out.print("\nEntrer l'adresse du client : ");
+                System.out.print("\n\n\n\t\tEntrer l'adresse du client : ");
                 adresse = scanner.nextLine();
                 if(Validation.estVide(adresse))
                 {
-                    System.out.print("Hey 😂😂😂! Vous devez remplir ce champ: \n");
+                    System.out.print("\n\n\n\t\tHey 😂😂😂! Vous devez remplir ce champ: \n");
                 }
             }while (Validation.estVide(adresse));
             /*--------------------------------------------------------------------------------------------*/
 
             /*-----------------------------------validation email du client ------------------------------------*/
             do{
-                System.out.print("Entrer le email: ");
+                System.out.print("\n\n\n\t\tEntrer le email: ");
                 email = scanner.nextLine();
                 if(!Validation.isValidMail(email))
                 {
                     System.out.print("Hey 😂😂😂!Vous devez saisir un email correct: \n");
                 }
-            }while (Validation.isValidMail(email));
+            }while (!Validation.isValidMail(email));
             /*--------------------------------------------------------------------------------------------*/
 
             /*-----------------------------------validation mot de passe ------------------------------------*/
             do{
-                System.out.print("Entrer votre mot de passe : ");
+                System.out.print("\n\n\n\t\tEntrer votre mot de passe : ");
                 password = scanner.nextLine();
                 if(Validation.estVide(password))
                 {

@@ -1,2 +1,50 @@
 [
+    {
+        "tauxLocation": 8.0,
+        "ref": "REF0001",
+        "prix": 1005.0,
+        "localisation": "cassamango",
+        "type": "appartement",
+        "nombrePiece": 30
+    },
+    {
+        "tauxLocation": 8.0,
+        "ref": "REF0001",
+        "prix": 1005.0,
+        "localisation": "cassamango",
+        "type": "appartement",
+        "nombrePiece": 30
+    },
+    {
+        "tauxLocation": 8.0,
+        "ref": "REF0003",
+        "prix": 1005.0,
+        "localisation": "cassamango",
+        "type": "appartement",
+        "nombrePiece": 30
+    },
+    {
+        "tauxLocation": 8.0,
+        "ref": "REF0001",
+        "prix": 1005.0,
+        "localisation": "cassamango",
+        "type": "appartement",
+        "nombrePiece": 30
+    },
+    {
+        "tauxLocation": 8.0,
+        "ref": "REF0001",
+        "prix": 1005.0,
+        "localisation": "cassamango",
+        "type": "appartement",
+        "nombrePiece": 30
+    },
+    {
+        "tauxLocation": 8.0,
+        "ref": "REF0001",
+        "prix": 1005.0,
+        "localisation": "cassamango",
+        "type": "appartement",
+        "nombrePiece": 30
+    }
 ]

@@ -1,7 +1,12 @@
 package interfaces;
+import biens.Appartement;
 import biens.Chambre;
+import biens.Local;
+import org.json.simple.JSONArray;
 import reservation.Reservation;
 import utilisateurs.Personne;
+
+import java.util.ArrayList;
 
 /**
  * ***************** Fonctionnalites du Gestionnaires ******
@@ -22,13 +27,30 @@ public interface IService{
    boolean addUtilisateur(Personne Personne);
    boolean removePersonneClient(Personne personne);
    boolean loginToApp(String login, String password);
-   boolean addChambre(Chambre chambre);
-   boolean  addReservation(Reservation reservation );
-   boolean  cancelReservation(int id);
+   void addChambre(Chambre chambre);
+   void addLocalAppart(Appartement appartement);
+   void addReservation(Reservation reservation );
+   void listReservationsEnCours();
    void validReservation(String id);
    void listingLocal();
-   boolean removeLocal(String ref);
+   void seeReservationByclient(String clientNci);
    Personne searchUtilisateurs(String nci);
    String getRole(String nci);
    int cout(int prix, int taux);
+
+   ArrayList<Personne> convertisseursJsonArrayPersonne();
+
+   ArrayList<Local> convertisseursJsonArrayLocal();
+
+   ArrayList<Chambre> convertisseursJsonArrayChambre();
+
+   void writeJsonArray(JSONArray jsonArray, String path);
+
+   JSONArray jsonFile(String path);
+
+   void flushEcran();
+
+   void pauseEcran();
+
+   ArrayList<Reservation> convertisseursJsonArrayReservation();
 }

@@ -19,16 +19,17 @@ import java.util.ArrayList;
 public class Service implements IService {
     ArrayList<Personne> listeUtilisateurs= new ArrayList<Personne>();
     ArrayList<Local> listeLocaux= new ArrayList<Local>();
+    ArrayList<Chambre> listeChambre= new ArrayList<Chambre>();
     ArrayList<Reservation> listesDesReservations= new ArrayList<Reservation>();
 
     JSONArray locauxListJson = jsonFile("src\\main\\java\\model\\locaux.json");
-    JSONArray locauxAppListJson = jsonFile("src\\main\\java\\model\\appartement.json");
     JSONArray ChambreAppListJson = jsonFile("src\\main\\java\\model\\locauxApp.json");
     JSONArray reservationJson = jsonFile("src\\main\\java\\model\\reservation.json");
 
     File fileClients = new File("src\\main\\java\\model\\utilisateurs.json");
     File filesReservations = new File("src\\main\\java\\model\\reservation.json");
     File fileLocals = new File("src\\main\\java\\model\\locaux.json");
+    File fileChambre = new File("src\\main\\java\\model\\chambre.json");
 
     Type typeUtilisateurs = new TypeToken<ArrayList<Personne>>(){}.getType();
     Type typeLocal = new TypeToken<ArrayList<Local>>(){}.getType();
@@ -129,62 +130,39 @@ public class Service implements IService {
             }
          }
        listeLocaux.clear();
+       
     }
 
     @Override
-    public boolean addChambre(Chambre chambre) {
+    public void addChambre(Chambre chambre) {
         JSONObject objLoc = new JSONObject();
-        listeLocaux=convertisseursJsonArrayLocal();
+        
         objLoc.put("ref", chambre.getRef());
         objLoc.put("localisation", chambre.getLocalisation());
         objLoc.put("prix", chambre.getPrix());
         objLoc.put("tauxLocation", chambre.getTauxLocation());
         objLoc.put("dimension", chambre.getDimension());
         objLoc.put("etat", chambre.getEtat());
+        objLoc.put("type", chambre.getType());
         locauxListJson.add(objLoc);
-      /*  listeLocaux.add(chambre);
-        try {
-            FileWriter writer = new FileWriter(fileLocals);
-            gson.toJson(listeLocaux,writer);
-            writer.flush();
-            writer.close();
-            listeLocaux.clear();
-        } catch (IOException e) {
-        
-            e.printStackTrace();
-        }
-        */
-        
-        writeJsonArray(locauxListJson,"src\\main\\java\\model\\chambre.json");
-        return true;
+        writeJsonArray(locauxListJson,"src\\main\\java\\model\\locaux.json");
     }
-    
-public boolean addLocalAppart(Appartement appartement){
+    @Override
+    public void addLocalAppart(Appartement appartement){
         JSONObject objApp = new JSONObject();
         JSONObject objChambre = new JSONObject();
-       // listeLocaux=convertisseursJsonArrayLocal();
+        
        
         objApp.put("ref", appartement.getRef());
         objApp.put("localisation", appartement.getLocalisation());
         objApp.put("prix",  appartement.getPrix());
         objApp.put("tauxLocation", appartement.getTauxLocation());
         objApp.put("nombrePiece", appartement.getNombreDepiece());
-        objApp.put("type", "appartement");
-        locauxAppListJson.add(objApp);
-        writeJsonArray(locauxAppListJson,"src\\main\\java\\model\\appartement.json");
-       /* listeLocaux.add(appartement);
-       
-        try {
-            FileWriter writer = new FileWriter(fileLocals);
-            gson.toJson(listeLocaux,writer);
-            writer.flush();
-            writer.close();
-            listeLocaux.clear();
-        } catch (IOException e) {
-            
-            e.printStackTrace();
-        }*/
-
+        objApp.put("type", appartement.getType());
+        objApp.put("etat", appartement.getEtat());
+        locauxListJson.add(objApp);
+        writeJsonArray(locauxListJson,"src\\main\\java\\model\\locaux.json");
+    
         for(Chambre chambre:appartement.getListeChambre()){
 
             objChambre.put("ref", chambre.getRef());
@@ -196,11 +174,10 @@ public boolean addLocalAppart(Appartement appartement){
             ChambreAppListJson.add(objChambre);
         }
         writeJsonArray(ChambreAppListJson,"src\\main\\java\\model\\locauxApp.json");
-        
-        return true;
+
 }
     @Override
-    public boolean addReservation(Reservation reservation) {
+    public void addReservation(Reservation reservation) {
         JSONObject objReservation = new JSONObject();
         objReservation.put("idReservation", reservation.getIdReservation());
         objReservation.put("clientNci", reservation.getClientNci());
@@ -211,9 +188,8 @@ public boolean addLocalAppart(Appartement appartement){
         objReservation.put("createAt", reservation.getCreateAt());
         reservationJson.add(objReservation);
         writeJsonArray(reservationJson,"src\\main\\java\\model\\reservation.json");
-        return true;
     }
-
+    @Override
     public void listReservationsEnCours(){
         listesDesReservations  = convertisseursJsonArrayReservation();
         for (Reservation reservation : listesDesReservations) {
@@ -225,12 +201,6 @@ public boolean addLocalAppart(Appartement appartement){
         listesDesReservations.clear();
 
     }
-
-    @Override
-    public boolean cancelReservation(int id) {
-        return false;
-    }
-
     @Override
     public void validReservation(String id) {
         listesDesReservations  = convertisseursJsonArrayReservation();
@@ -239,7 +209,9 @@ public boolean addLocalAppart(Appartement appartement){
 
             if(reservation.getIdReservation().equals(id)){
 
-                reservation.setEtat("valider");
+              reservation.setEtat("valider");
+              System.out.println(reservation.affichage());
+              pauseEcran();
                 try {
                    FileWriter writer = new FileWriter("src\\main\\java\\model\\reservation.json");
                    gson.toJson(listesDesReservations,writer);
@@ -258,7 +230,7 @@ public boolean addLocalAppart(Appartement appartement){
         }
 
     }
-
+    @Override
     public  void seeReservationByclient(String clientNci){
         listesDesReservations  = convertisseursJsonArrayReservation();
         for(Reservation reservation:listesDesReservations){
@@ -272,13 +244,7 @@ public boolean addLocalAppart(Appartement appartement){
         }
     }
 
-
-
-    @Override
-    public boolean removeLocal(String ref) {
-        return false;
-    }
-
+    
 
     @Override
     public String getRole(String nci) {
@@ -300,7 +266,7 @@ public boolean addLocalAppart(Appartement appartement){
     public int cout(int prix, int taux) {
         return 0;
     }
-
+    @Override
     public ArrayList<Personne> convertisseursJsonArrayPersonne(){
         try {
           //fileClients = new File("src\\main\\java\\model\\utilisateurs.json");
@@ -310,9 +276,9 @@ public boolean addLocalAppart(Appartement appartement){
             return null;
         }
     }
-   
-    
 
+
+    @Override
     public ArrayList<Local> convertisseursJsonArrayLocal(){
         try {
             File fileLocals = new File("src\\main\\java\\model\\locaux.json");
@@ -322,7 +288,17 @@ public boolean addLocalAppart(Appartement appartement){
             return null;
         }
     }
-
+    @Override
+    public ArrayList<Chambre> convertisseursJsonArrayChambre(){
+        try {
+            File fileChambre = new File("src\\main\\java\\model\\chambre.json");
+          return  listeChambre= gson.fromJson(new FileReader(fileChambre), typeChambre);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    @Override
     public void writeJsonArray(JSONArray jsonArray, String path) {
         try (FileWriter file = new FileWriter(path)) {
             file.write(jsonArray.toJSONString());
@@ -332,6 +308,7 @@ public boolean addLocalAppart(Appartement appartement){
         }
 
     }
+    @Override
     public JSONArray jsonFile(String path) {
         JSONParser jsonParser = new JSONParser();
         JSONArray jsonFile = new JSONArray();
@@ -345,18 +322,18 @@ public boolean addLocalAppart(Appartement appartement){
 
     }
 
-
+    @Override
     public void flushEcran(){
 
         System.out.print("\033[H\033[2J");  
         System.out.flush();
     }
-
+    @Override
     public void pauseEcran(){
         System.out.println("\n\t\t\t Veuillez appuyer sur une touche apres avoir terminer ");
         new java.util.Scanner(System.in).nextLine();
     }
-
+    @Override
     public ArrayList<Reservation> convertisseursJsonArrayReservation(){
         try {
 

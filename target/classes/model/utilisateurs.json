@@ -34,5 +34,14 @@
     "email": "fsr",
     "password": "1234",
     "role": "CLIENT"
+  },
+  {
+    "nci": "1425200019994",
+    "nomComplet": "julien kalipe",
+    "tel": "00221778726229",
+    "adresse": "dakar",
+    "email": "julienkalipe@gmail.com",
+    "password": "",
+    "role": "CLIENT"
   }
 ]

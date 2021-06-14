@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "tauxLocation": 5.0,
+        "ref": "REF0003",
+        "prix": 500000.0,
+        "localisation": "londre",
+        "type": "appartement",
+        "nombrePiece": 3,
+        "etat": "disponible"
+    },
+    {
+        "tauxLocation": 5.0,
+        "ref": "REF0002",
+        "prix": 50000.0,
+        "localisation": "saint louis",
+        "type": "chambre",
+        "dimension": 200,
+        "etat": "disponible"
+    }
+]

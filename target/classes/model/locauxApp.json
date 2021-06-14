@@ -1,1 +1,26 @@
-[{"tauxLocation":1.0,"ref":"REF0001","prix":500.0,"localisation":"lome","dimension":10,"etat":"france"},{"tauxLocation":1.0,"ref":"REF0001","prix":500.0,"localisation":"lome","dimension":10,"etat":"france"},{"tauxLocation":1.0,"ref":"REF0001","prix":500.0,"localisation":"lome","dimension":10,"etat":"france"},{"tauxLocation":1.0,"ref":"REF0001","prix":500.0,"localisation":"lome","dimension":10,"etat":"france"},{"tauxLocation":1.0,"ref":"REF0001","prix":500.0,"localisation":"lome","dimension":10,"etat":"france"},{"tauxLocation":1.0,"ref":"REF0001","prix":500.0,"localisation":"lome","dimension":10,"etat":"france"}]
+[
+    {
+        "tauxLocation": 5.0,
+        "ref": "REF0003",
+        "prix": 500000.0,
+        "localisation": "londre",
+        "dimension": 300,
+        "etat": "disponible"
+    },
+    {
+        "tauxLocation": 5.0,
+        "ref": "REF0003",
+        "prix": 500000.0,
+        "localisation": "londre",
+        "dimension": 300,
+        "etat": "disponible"
+    },
+    {
+        "tauxLocation": 5.0,
+        "ref": "REF0003",
+        "prix": 500000.0,
+        "localisation": "londre",
+        "dimension": 300,
+        "etat": "disponible"
+    }
+]
