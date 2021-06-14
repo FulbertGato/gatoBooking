@@ -1,0 +1,38 @@
+[
+  {
+    "nci": "1452199874589",
+    "nomComplet": "junior gato",
+    "tel": "+221778726229",
+    "adresse": "dakar",
+    "email": "dee",
+    "password": "41",
+    "role": "CLIENT"
+  },
+  {
+    "nci": "2456199712345",
+    "nomComplet": "hugue souba",
+    "tel": "+221778726229",
+    "adresse": "dakar",
+    "email": "laloujunior@",
+    "password": "1234",
+    "role": "CLIENT"
+  },
+  {
+    "nci": "1111200011111",
+    "nomComplet": "junior gato",
+    "tel": "00221778726229",
+    "adresse": "dakar",
+    "email": "junior@gmail.com",
+    "password": "1234",
+    "role": "GESTIONNAIRE"
+  },
+  {
+    "nci": "1754200019955",
+    "nomComplet": "jordan zorba",
+    "tel": "00221778721946",
+    "adresse": "dakar",
+    "email": "fsr",
+    "password": "1234",
+    "role": "CLIENT"
+  }
+]
